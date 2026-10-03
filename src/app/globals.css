@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────
+   DESIGN TOKENS — Dark (default)
+   ───────────────────────────────────────────────────────── */
+:root {
+  --background:       #0B0D0F;
+  --surface:          #111519;
+  --surface-elevated: #171C21;
+  --border:           #252C33;
+  --text:             #F3F5F7;
+  --text-secondary:   #A8B0B8;
+  --text-muted:       #69727C;
+  --accent:           #4D8DFF;
+  --accent-hover:     #78A9FF;
+  --accent-deep:      #1D4ED8;
+  --success:          #55C98A;
+  --warning:          #E9B949;
+  --error:            #F07178;
+
+  /* Motion */
+  --duration-fast:   150ms;
+  --duration-normal: 300ms;
+  --duration-slow:   600ms;
+  --duration-story:  1000ms;
+  --ease-standard:   cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─────────────────────────────────────────────────────────
+   LIGHT THEME
+   ───────────────────────────────────────────────────────── */
+.light,
+[data-theme="light"] {
+  --background:       #F7F8FA;
+  --surface:          #FFFFFF;
+  --surface-elevated: #F0F2F4;
+  --border:           #DCE1E6;
+  --text:             #101419;
+  --text-secondary:   #5C6670;
+  --text-muted:       #8A94A0;
+  --accent:           #245FD1;
+  --accent-hover:     #1D4ED8;
+  --accent-deep:      #153E9B;
+  --success:          #2E8B57;
+  --warning:          #B8860B;
+  --error:            #D32F2F;
+}
+
+/* ─────────────────────────────────────────────────────────
+   TAILWIND THEME MAPPING
+   ───────────────────────────────────────────────────────── */
+@theme {
+  --color-background:       var(--background);
+  --color-surface:          var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border:           var(--border);
+  --color-text:             var(--text);
+  --color-text-secondary:   var(--text-secondary);
+  --color-text-muted:       var(--text-muted);
+  --color-accent:           var(--accent);
+  --color-accent-hover:     var(--accent-hover);
+  --color-accent-deep:      var(--accent-deep);
+  --color-success:          var(--success);
+  --color-warning:          var(--warning);
+  --color-error:            var(--error);
+
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono), monospace;
+}
+
+/* ─────────────────────────────────────────────────────────
+   BASE RESET
+   ───────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+/* ─────────────────────────────────────────────────────────
+   FOCUS VISIBLE — ACCESSIBILITY
+   ───────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Remove focus ring for mouse users, keep for keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SCROLLBAR
+   ───────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ─────────────────────────────────────────────────────────
+   TYPOGRAPHY UTILITIES
+   ───────────────────────────────────────────────────────── */
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, 'JetBrains Mono', monospace;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SCROLL-REVEAL ANIMATION (CSS fallback for JS)
+   ───────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Subtle pulse for accent dots */
+@keyframes accentPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(0.85); }
+}
+
+.animate-accent-pulse {
+  animation: accentPulse 2s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────────────────────
+   REDUCED MOTION — CRITICAL ACCESSIBILITY
+   ───────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Keep opacity transitions only */
+  .motion-safe\:transition-opacity {
+    transition: opacity 200ms ease !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   MOBILE TOUCH TARGETS — ACCESSIBILITY
+   ───────────────────────────────────────────────────────── */
+@media (pointer: coarse) {
+  a, button, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   PRINT STYLES
+   ───────────────────────────────────────────────────────── */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  nav, footer, .no-print {
+    display: none !important;
+  }
+}
