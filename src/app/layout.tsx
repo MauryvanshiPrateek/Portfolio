@@ -5,7 +5,6 @@ import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/footer/Footer";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 import { CommandPalette } from "@/components/ui/CommandPalette";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import { PageTransition } from "@/components/ui/PageTransition";
@@ -92,7 +91,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} ${cormorant.variable}`}
     >
-      <body className="min-h-screen flex flex-col bg-background text-text antialiased selection:bg-accent selection:text-white cursor-none md:cursor-auto">
+      <body className="min-h-screen flex flex-col bg-background text-text antialiased selection:bg-accent selection:text-white">
         <LanguageProvider>
           <ThemeProvider
             attribute="class"
@@ -101,7 +100,6 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <LoadingScreen />
-            <CustomCursor />
             <CommandPalette />
             <Navbar />
             <div className="flex-1 flex flex-col pt-[72px]">

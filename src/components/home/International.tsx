@@ -6,7 +6,7 @@ import { ease } from "@/lib/animations";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export function International() {
-  const { t } = useLanguage();
+  const { t, isJapanese } = useLanguage();
 
   return (
     <section className="py-20 lg:py-24 px-5 md:px-8 lg:px-12 bg-[#110D28]">
@@ -15,7 +15,7 @@ export function International() {
         <div className="lg:col-span-7 space-y-4">
           <div className="font-serif text-xs text-accent uppercase tracking-[0.25em] flex items-center gap-2">
             <Globe2 className="w-3.5 h-3.5" />
-            <span>〇五 / 越境 · {t("international.sectionTag")}</span>
+            <span>{isJapanese ? "〇五 / 越境 · " : "05 · "}{t("international.sectionTag")}</span>
           </div>
           <h2 className="font-serif italic text-3xl sm:text-4xl lg:text-5xl font-normal tracking-wide text-text">
             {t("international.heading")}

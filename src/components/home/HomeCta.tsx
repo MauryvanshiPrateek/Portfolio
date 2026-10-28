@@ -8,7 +8,7 @@ import { ease } from "@/lib/animations";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export function HomeCta() {
-  const { t } = useLanguage();
+  const { t, isJapanese } = useLanguage();
 
   return (
     <section className="py-24 lg:py-32 px-5 md:px-8 lg:px-12 bg-[#110D28] relative overflow-hidden border-t border-[#3a2a5e]/30">
@@ -20,7 +20,7 @@ export function HomeCta() {
 
       <div className="max-w-[1180px] mx-auto space-y-10 relative z-10">
         <div className="font-serif text-xs text-accent uppercase tracking-[0.25em]">
-          〇六 / 対話 · {t("cta.sectionTag")}
+          {isJapanese ? "〇六 / 対話 · " : "06 · "}{t("cta.sectionTag")}
         </div>
 
         <motion.div

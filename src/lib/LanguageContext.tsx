@@ -24,7 +24,8 @@ export const translations = {
 
   // ── Hero ────────────────────────────────────────────────────────────────────
   hero: {
-    tagline:   { en: "職人の道 · 匠", ja: "職人の道 · 匠" },
+    tagline:   { en: "THE ARTISAN'S WAY · CRAFT", ja: "職人の道 · 匠" },
+    horizon:   { en: "DUSK HORIZON", ja: "黄昏 · DUSK HORIZON" },
     coords:    { en: "BHILAI 21.19° N ──► TOKYO 35.67° N", ja: "ブヒライ 21.19° N ──► 東京 35.67° N" },
     walkDown:  { en: "WALK DOWN TO THE GROVE", ja: "道を歩き下る" },
   },
@@ -37,7 +38,7 @@ export const translations = {
       en: "Namaste! I am <b>Mauryvanshi Prateek</b> — an artificial intelligence engineering student at CSVTU Bhilai, building practical systems where computational models meet real human friction.",
       ja: "はじめまして。私は <b>Mauryvanshi Prateek</b> です。CSVTU Bhilaiで人工知能工学を学んでおり、計算モデルと現実の課題が交わる実用的なシステムを構築しています。",
     },
-    philosophyTag: { en: "PHILOSOPHY // 理念", ja: "理念 // PHILOSOPHY" },
+    philosophyTag: { en: "PHILOSOPHY // PRINCIPLES", ja: "理念 // PHILOSOPHY" },
     philosophyFlow: { en: "IDEA ──► SYSTEM ──► PRODUCT", ja: "アイデア ──► システム ──► 製品" },
     items: [
       {

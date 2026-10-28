@@ -27,7 +27,7 @@ const artifactMap: Record<string, React.ComponentType<{ isHovered?: boolean }>> 
 
 export function JapaneseProjectsShowcase() {
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
-  const { t } = useLanguage();
+  const { t, isJapanese } = useLanguage();
 
   return (
     <section id="featured-work" className="relative py-24 lg:py-32 px-5 md:px-8 lg:px-12 bg-[#110D28] overflow-hidden">
@@ -55,7 +55,7 @@ export function JapaneseProjectsShowcase() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#3a2a5e]/40 pb-8">
           <div className="space-y-3 max-w-2xl">
             <div className="flex items-center gap-2 text-xs font-serif tracking-[0.28em] text-accent uppercase">
-              <span>〇二 / 作品群</span>
+              <span>{isJapanese ? "〇二 / 作品群" : "02"}</span>
               <span className="text-[#baaed4]/40">·</span>
               <span>{t("projects.sectionTag")}</span>
             </div>
@@ -132,10 +132,14 @@ export function JapaneseProjectsShowcase() {
                 {/* Cultural Kanji Label + Project Title */}
                 <div className="mt-4 space-y-1.5 flex flex-col items-center">
                   <div className="flex items-center gap-2 font-serif text-xs tracking-[0.24em] uppercase text-accent font-medium">
-                    <span className="text-sm font-normal text-text/90 font-serif">
-                      {project.japaneseElement.kanji}
-                    </span>
-                    <span className="text-[#baaed4]/40">·</span>
+                    {isJapanese && (
+                      <>
+                        <span className="text-sm font-normal text-text/90 font-serif">
+                          {project.japaneseElement.kanji}
+                        </span>
+                        <span className="text-[#baaed4]/40">·</span>
+                      </>
+                    )}
                     <span>{project.japaneseElement.name}</span>
                   </div>
 

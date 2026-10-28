@@ -7,14 +7,14 @@ import { useLanguage } from "@/lib/LanguageContext";
 import { translations } from "@/lib/LanguageContext";
 
 export function ThePathSoFar() {
-  const { lang, t } = useLanguage();
+  const { lang, t, isJapanese } = useLanguage();
   const pathItems = translations.path.items;
   const philosophySteps = translations.path.philosophySteps;
 
   return (
     <section
       id="path"
-      className="relative py-20 lg:py-28 px-5 md:px-8 lg:px-12 bg-[#110D28] overflow-hidden"
+      className="tl-next relative py-20 lg:py-28 px-5 md:px-8 lg:px-12 bg-[#110D28] overflow-hidden"
     >
       {/* Target anchor for backwards-compatibility */}
       <span id="about" className="absolute -top-24 pointer-events-none" />
@@ -38,7 +38,7 @@ export function ThePathSoFar() {
         {/* Section Header */}
         <div className="space-y-4 max-w-2xl">
           <div className="flex items-center gap-2 text-xs font-serif tracking-[0.25em] text-accent uppercase">
-            <span>〇一 / 道</span>
+            <span>{isJapanese ? "〇一 / 道" : "01"}</span>
             <span className="text-[#baaed4]/40">·</span>
             <span>{t("path.sectionTag")}</span>
           </div>

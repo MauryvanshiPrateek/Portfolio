@@ -14,7 +14,7 @@ export function TpcMetrics() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-80px" });
   const [animated, setAnimated] = useState(false);
-  const { lang, t } = useLanguage();
+  const { lang, t, isJapanese } = useLanguage();
   const metricsData = translations.tpc.metrics;
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export function TpcMetrics() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#3a2a5e]/40 pb-6">
           <div className="space-y-2 max-w-2xl">
             <div className="font-serif text-xs text-accent tracking-[0.25em] uppercase">
-              〇三 / 人と組織 · {t("tpc.sectionTag")}
+              {isJapanese ? "〇三 / 人と組織 · " : "03 · "}{t("tpc.sectionTag")}
             </div>
             <h2 className="font-serif italic text-3xl sm:text-4xl lg:text-5xl text-text font-normal tracking-wide">
               {t("tpc.heading")}
