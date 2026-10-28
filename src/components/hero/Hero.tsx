@@ -1,130 +1,75 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "motion/react";
-import { EngineeringMap } from "./EngineeringMap";
-import { ArrowRight, FileText } from "lucide-react";
+import { DuskScene } from "./DuskScene";
+import { ArrowDown } from "lucide-react";
 import { ease } from "@/lib/animations";
+import { WavyDivider } from "@/components/ui/WavyDivider";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export function Hero() {
+  const { t } = useLanguage();
   return (
-    <section className="relative min-h-[calc(100svh-72px)] flex flex-col justify-between overflow-hidden px-5 md:px-8 lg:px-10 py-8 lg:py-12">
-      {/* Subtle blue radial glow background (5–8% opacity) */}
-      <div
-        className="pointer-events-none absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-accent/6 blur-[140px]"
-        aria-hidden="true"
-      />
+    <section className="relative w-full h-[100svh] min-h-[640px] flex flex-col justify-between overflow-hidden">
+      {/* 1. The Authentic Godhuli Dusk Scene (Brijesh Chandrakar inspired) */}
+      <DuskScene />
 
-      <div className="max-w-[1280px] mx-auto w-full my-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-        {/* Left Column (60% on desktop) */}
-        <div className="lg:col-span-7 flex flex-col justify-center space-y-6">
-          {/* Eyebrow */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: ease.standard }}
-            className="flex items-center gap-2"
-          >
-            <span className="w-2 h-2 rounded-full bg-accent" />
-            <span className="font-mono text-xs md:text-sm tracking-widest text-text-secondary uppercase">
-              AI / DATA / SOFTWARE
-            </span>
-          </motion.div>
-
-          {/* Name */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45, ease: ease.standard }}
-            className="space-y-1"
-          >
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-text leading-[0.95]">
-              <span className="block text-text-secondary font-normal text-3xl sm:text-5xl lg:text-6xl">
-                Mauryvanshi
-              </span>
-              <span className="block text-text font-bold text-5xl sm:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-text via-text to-text-secondary">
-                Prateek
-              </span>
-            </h1>
-          </motion.div>
-
-          {/* Positioning Headline */}
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7, ease: ease.standard }}
-            className="text-lg sm:text-xl lg:text-2xl text-text-secondary max-w-[650px] font-normal leading-relaxed"
-          >
-            I build intelligent products that turn data and complex problems into usable systems.
-          </motion.p>
-
-          {/* Technical Tags */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.85, ease: ease.standard }}
-            className="flex flex-wrap items-center gap-2 pt-1"
-          >
-            {[
-              "Machine Learning",
-              "Deep Learning",
-              "GenAI",
-              "Data",
-              "Product Development",
-            ].map((tag) => (
-              <span
-                key={tag}
-                className="px-2.5 py-1 rounded-[6px] border border-border bg-surface text-[12px] font-mono text-text-muted"
-              >
-                {tag}
-              </span>
-            ))}
-          </motion.div>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.2, ease: ease.standard }}
-            className="flex flex-wrap items-center gap-4 pt-4"
-          >
-            <a
-              href="#featured-work"
-              className="h-12 px-6 rounded-[10px] bg-accent text-white font-mono text-xs uppercase tracking-wider flex items-center gap-2 hover:bg-accent-hover hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(77,141,255,0.25)] transition-all duration-200 cursor-pointer"
-            >
-              <span>Explore my work</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-
-            <Link
-              href="/resume"
-              className="h-12 px-5 rounded-[10px] border border-border bg-surface text-text hover:border-accent hover:text-accent font-mono text-xs uppercase tracking-wider flex items-center gap-2 transition-all duration-200"
-            >
-              <FileText className="w-4 h-4" />
-              <span>View résumé ↗</span>
-            </Link>
-          </motion.div>
-        </div>
-
-        {/* Right Column: Engineering Map (40% on desktop) */}
+      {/* 2. Top Subtle Identity Bar */}
+      <div className="relative z-10 w-full max-w-[1360px] mx-auto px-5 md:px-8 lg:px-12 pt-6 flex items-center justify-between text-xs font-serif tracking-[0.2em] text-[#baaed4]/70">
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.9, ease: ease.standard }}
-          className="lg:col-span-5 w-full flex items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: ease.standard }}
+          className="flex items-center gap-2 text-xs"
         >
-          <EngineeringMap />
+          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+          <span>職人の道 · 匠</span>
+          <span className="text-border/60">·</span>
+          <span>黄昏 · DUSK HORIZON</span>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2, ease: ease.standard }}
+          className="hidden sm:flex items-center gap-2 text-[11px] tracking-[0.25em]"
+        >
+          <span>{t("hero.coords")}</span>
         </motion.div>
       </div>
 
-      {/* Hero Footnotes / Context */}
-      <div className="max-w-[1280px] mx-auto w-full pt-8 mt-4 border-t border-border/60 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs font-mono text-text-muted">
-        <div>
-          B.Tech (Hons.) CSE — Artificial Intelligence / CSVTU · Chhattisgarh
-        </div>
-        <div className="text-text-secondary">
-          Building toward an international career in AI & software engineering.
-        </div>
+      {/* 3. Center Atmospheric Title (Minimalist & Hand-crafted, just like reference screenshot) */}
+      <div className="relative z-10 my-auto text-center px-4 pointer-events-none select-none">
+        {/* Empty space allows the majestic Banyan tree, cattle, hut, and mandir to take full visual presence */}
+      </div>
+
+      {/* 4. Bottom Scroll Cue & Wavy Horizon Boundary */}
+      <div className="relative z-20 flex flex-col items-center justify-end">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.8, ease: ease.standard }}
+          className="pb-2 flex flex-col items-center justify-center gap-1.5"
+        >
+          <a
+            href="#path"
+            data-hover-box="true"
+            data-cursor-label="WALK DOWN ↓"
+            className="group flex flex-col items-center gap-1 font-serif text-[11px] tracking-[0.28em] text-[#baaed4]/80 hover:text-accent transition-colors"
+            aria-label="Walk down to the grove"
+          >
+            <span>{t("hero.walkDown")}</span>
+            <ArrowDown className="w-3 h-3 text-accent animate-bounce" />
+          </a>
+        </motion.div>
+
+        {/* 5. Organic Wavy Line Transition with Center Glowing Node */}
+        <WavyDivider
+          hasNode={true}
+          nodeHref="#path"
+          nodeLabel="Walk down into the path"
+          className="w-full -mt-2"
+        />
       </div>
     </section>
   );

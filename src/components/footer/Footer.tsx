@@ -3,8 +3,10 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { socialLinks } from "@/data/navigation";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export function Footer() {
+  const { t } = useLanguage();
   useEffect(() => {
     // Easter Egg #2
     console.log("still debugging");
@@ -53,12 +55,12 @@ export function Footer() {
             </a>
             <span className="text-border">·</span>
             <Link href="/resume" className="hover:text-accent transition-colors">
-              Résumé
+              {t("nav.resume")}
             </Link>
           </div>
 
           <div className="text-xs text-text-muted">
-            Built with curiosity, questionable amounts of debugging, and too much coffee.
+            {t("footer.tagline")}
           </div>
         </div>
       </div>

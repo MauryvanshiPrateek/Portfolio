@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navItems, socialLinks } from "@/data/navigation";
-import { ThemeToggle } from "./ThemeToggle";
+import { socialLinks } from "@/data/navigation";
+import { LanguageToggle } from "./LanguageToggle";
+import { useLanguage } from "@/lib/LanguageContext";
 import { Menu, X, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -12,6 +13,14 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { t } = useLanguage();
+
+  // Nav items using translation keys
+  const navItems = [
+    { href: "/",           labelKey: "nav.home" },
+    { href: "/projects",   labelKey: "nav.projects" },
+    { href: "/experience", labelKey: "nav.experience" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,18 +61,14 @@ export function Navbar() {
           {/* Logo / Name */}
           <Link
             href="/"
-            className="group flex items-center gap-2.5 font-medium text-text hover:text-accent transition-colors duration-200"
+            className="group flex items-center gap-2 font-serif text-sm tracking-[0.25em] uppercase text-text hover:text-accent transition-colors duration-200"
             aria-label="Mauryvanshi Prateek — Home"
           >
-            <span className="w-2 h-2 rounded-full bg-accent group-hover:scale-125 transition-transform duration-200" />
-            <span className="tracking-tight text-[15px] sm:text-[17px] font-semibold">
-              <span className="hidden sm:inline">Mauryvanshi </span>
-              <span className="text-text group-hover:text-accent transition-colors">Prateek</span>
-            </span>
+            <span>MAURYVANSHI PRATEEK</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+          <nav className="hidden md:flex items-center gap-3 lg:gap-5">
             {navItems.map((item) => {
               const isActive =
                 item.href === "/"
@@ -74,19 +79,19 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "px-3 py-1.5 rounded-[8px] text-[13px] font-mono tracking-wider transition-colors duration-200",
+                    "font-serif tracking-[0.18em] text-[12px] uppercase transition-colors duration-200",
                     isActive
-                      ? "text-accent bg-surface border border-border"
-                      : "text-text-secondary hover:text-text hover:bg-surface/50"
+                      ? "text-accent font-semibold"
+                      : "text-text-secondary hover:text-text"
                   )}
                 >
-                  {item.label.toUpperCase()}
+                  {t(item.labelKey)}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Desktop Utilities (Contact, Theme, CmdK cue) */}
+          {/* Desktop Utilities (Contact, Language Toggle, CmdK cue) */}
           <div className="hidden md:flex items-center gap-2.5">
             <Link
               href="/contact"
@@ -97,7 +102,7 @@ export function Navbar() {
               <Mail className="w-4 h-4" />
             </Link>
 
-            <ThemeToggle />
+            <LanguageToggle />
 
             {/* Quick Command Key hint */}
             <button
@@ -117,9 +122,9 @@ export function Navbar() {
             </button>
           </div>
 
-          {/* Mobile Actions: Theme + Hamburger */}
+          {/* Mobile Actions: Language Toggle + Hamburger */}
           <div className="flex md:hidden items-center gap-2">
-            <ThemeToggle />
+            <LanguageToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="w-11 h-11 flex items-center justify-center rounded-[10px] border border-border bg-surface text-text hover:border-accent hover:text-accent transition-colors"
@@ -159,7 +164,7 @@ export function Navbar() {
                   <span className="font-mono text-xs text-text-muted mr-3">
                     0{index + 1}
                   </span>
-                  {item.label}
+                  {t(item.labelKey)}
                 </Link>
               );
             })}
@@ -187,7 +192,7 @@ export function Navbar() {
               </a>
               <span>·</span>
               <Link href="/resume" className="hover:text-accent transition-colors">
-                Résumé
+                {t("nav.resume")}
               </Link>
             </div>
           </div>

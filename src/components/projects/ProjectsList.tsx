@@ -160,17 +160,23 @@ export function ProjectsList() {
                         </Link>
                       </div>
 
-                      {/* Text & Metadata (5 cols) */}
                       <div
                         className={`lg:col-span-5 space-y-5 ${
                           isEven ? "lg:order-1" : "lg:order-2"
                         }`}
                       >
                         <div className="space-y-2">
-                          <div className="flex items-center gap-3 font-mono text-xs text-text-muted">
-                            <span className="text-accent font-semibold">0{index + 1}</span>
-                            <span>/</span>
-                            <span className="tracking-widest uppercase">{project.category}</span>
+                          <div className="flex items-center gap-2.5 font-serif text-xs text-text-muted">
+                            <span className="text-accent font-medium text-sm">
+                              {project.japaneseElement?.kanji}
+                            </span>
+                            <span className="text-accent font-serif tracking-wider">
+                              {project.japaneseElement?.name}
+                            </span>
+                            <span className="text-border">·</span>
+                            <span className="tracking-widest uppercase font-mono text-[10px] text-text-muted">
+                              {project.category}
+                            </span>
                           </div>
 
                           <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-text hover:text-accent transition-colors">
@@ -311,6 +317,25 @@ function ProjectVisualCard({ project }: { project: Project }) {
           <div className="flex gap-2 text-[10px] font-mono text-text-muted">
             <span className="px-2 py-0.5 rounded bg-surface border border-border text-warning">In Development</span>
             <span className="px-2 py-0.5 rounded bg-surface border border-border">MITRE ATT&CK Matrix</span>
+          </div>
+        </div>
+      );
+
+    case "omotenashi-core":
+      return (
+        <div className="space-y-3 py-2">
+          <div className="flex items-center justify-between text-xs font-mono text-accent">
+            <span className="flex items-center gap-1.5">
+              <Activity className="w-4 h-4" /> Artisanal Zero-Allocation Telemetry
+            </span>
+            <span>RUST ATOMIC ENGINE</span>
+          </div>
+          <div className="p-3 rounded-[8px] bg-background border border-border text-[11px] font-mono text-text-secondary leading-relaxed">
+            EVENT INGESTION ──► WAIT-FREE RING BUFFER ──► CACHE-LINE ATOMICS ──► ZERO-GC DISPATCH
+          </div>
+          <div className="flex gap-2 text-[10px] font-mono text-text-muted">
+            <span className="px-2 py-0.5 rounded bg-surface border border-border text-success">Sub-millisecond</span>
+            <span className="px-2 py-0.5 rounded bg-surface border border-border">Lock-Free Queue</span>
           </div>
         </div>
       );

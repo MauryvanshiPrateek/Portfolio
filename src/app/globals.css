@@ -4,19 +4,20 @@
    DESIGN TOKENS — Dark (default)
    ───────────────────────────────────────────────────────── */
 :root {
-  --background:       #0B0D0F;
-  --surface:          #111519;
-  --surface-elevated: #171C21;
-  --border:           #252C33;
-  --text:             #F3F5F7;
-  --text-secondary:   #A8B0B8;
-  --text-muted:       #69727C;
-  --accent:           #4D8DFF;
-  --accent-hover:     #78A9FF;
-  --accent-deep:      #1D4ED8;
+  --background:       #110D28;
+  --surface:          #19133A;
+  --surface-elevated: #231B4C;
+  --border:           #3A2A5E;
+  --text:             #F7F1E6;
+  --text-secondary:   #BAAED4;
+  --text-muted:       #786B94;
+  --accent:           #E89038;
+  --accent-hover:     #FFAF58;
+  --accent-deep:      #B85828;
+  --gold:             #C08A3A;
   --success:          #55C98A;
-  --warning:          #E9B949;
-  --error:            #F07178;
+  --warning:          #F5A642;
+  --error:            #E06060;
 
   /* Motion */
   --duration-fast:   150ms;
@@ -38,9 +39,9 @@
   --text:             #101419;
   --text-secondary:   #5C6670;
   --text-muted:       #8A94A0;
-  --accent:           #245FD1;
-  --accent-hover:     #1D4ED8;
-  --accent-deep:      #153E9B;
+  --accent:           #C2571A;
+  --accent-hover:     #A8430D;
+  --accent-deep:      #8F3406;
   --success:          #2E8B57;
   --warning:          #B8860B;
   --error:            #D32F2F;
@@ -59,13 +60,15 @@
   --color-text-muted:       var(--text-muted);
   --color-accent:           var(--accent);
   --color-accent-hover:     var(--accent-hover);
-  --color-accent-deep:      var(--accent-deep);
+  --color-gold:             var(--gold);
   --color-success:          var(--success);
   --color-warning:          var(--warning);
   --color-error:            var(--error);
 
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-mono), monospace;
+  --font-display: var(--font-display), var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
 }
 
 /* ─────────────────────────────────────────────────────────
@@ -134,6 +137,53 @@ body {
    ───────────────────────────────────────────────────────── */
 .font-mono {
   font-family: var(--font-mono), ui-monospace, 'JetBrains Mono', monospace;
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-inter), system-ui, sans-serif;
+}
+
+/* ─────────────────────────────────────────────────────────
+   HUD CORNER BRACKETS & RETICLE (Ashmit & Aahana inspired)
+   ───────────────────────────────────────────────────────── */
+.hud-corner {
+  position: relative;
+}
+.hud-corner::before,
+.hud-corner::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+  border-color: var(--accent);
+  opacity: 0.6;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hud-corner::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+.hud-corner::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+.hud-corner:hover::before,
+.hud-corner:hover::after {
+  opacity: 1;
+  width: 14px;
+  height: 14px;
+  border-color: var(--accent-hover);
+}
+
+/* Subtle dark noise texture overlay */
+.bg-noise {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 /* ─────────────────────────────────────────────────────────
@@ -218,3 +268,20 @@ body {
     display: none !important;
   }
 }
+
+/* ─────────────────────────────────────────────────────────
+   DRAGON BALL ANIME TRANSFORMATION SHAKE
+   ───────────────────────────────────────────────────────── */
+@keyframes kiShake {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3px, 2px); }
+  40% { transform: translate(3px, -2px); }
+  60% { transform: translate(-2px, 3px); }
+  80% { transform: translate(2px, -3px); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-ki-shake {
+  animation: kiShake 0.06s infinite linear;
+}
+

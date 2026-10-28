@@ -8,6 +8,13 @@ export interface Project {
   summary: string;
   oneLiner: string;
   tags: string[];
+  japaneseElement: {
+    name: string;
+    kanji: string;
+    romaji: string;
+    themeColor: string;
+    symbolism: string;
+  };
   problem?: string;
   solution?: string;
   features?: string[];
@@ -38,6 +45,13 @@ export const projects: Project[] = [
     summary:
       "A simulation and spatial risk analysis system designed to calculate and visualize downstream inundation following simulated dam failure events, enabling proactive disaster planning.",
     tags: ["ANUGA", "GIS", "HYDRODYNAMICS", "PYTHON"],
+    japaneseElement: {
+      name: "Mt. Fuji",
+      kanji: "富士山",
+      romaji: "Fujisan",
+      themeColor: "#6EA8FE",
+      symbolism: "Sacred waters, flood propagation & hydrodynamic terrain",
+    },
     problem:
       "Dam-break events release catastrophic flood waves downstream in minutes. Disaster mitigation authorities often rely on static elevation estimates rather than dynamic hydrodynamic flood propagation models, creating severe blindspots in evacuation planning.",
     solution:
@@ -77,6 +91,13 @@ export const projects: Project[] = [
     summary:
       "An inventory tracking system that removes the friction of complex POS dashboards for small retailers by enabling conversational stock queries, updates, and automated alerts directly inside WhatsApp.",
     tags: ["WHATSAPP API", "PYTHON", "AI ASSISTANT", "INVENTORY LOGIC"],
+    japaneseElement: {
+      name: "Torii Gate",
+      kanji: "鳥居",
+      romaji: "Torii",
+      themeColor: "#E85D45",
+      symbolism: "The gateway bridge connecting conversational messaging to retail records",
+    },
     problem:
       "Small retailers and wholesalers frequently avoid structured inventory software because desktop interfaces and multi-screen ERPs disrupt daily store counter operations. As a result, critical stockouts happen unnoticed.",
     solution:
@@ -116,6 +137,13 @@ export const projects: Project[] = [
     summary:
       "An agricultural decision support platform that combines live weather conditions, soil profile parameters, and intercropping agronomy rules to suggest resilient crop pairings for smallholder farmers.",
     tags: ["PYTHON", "AGRI-DATA", "SOIL API", "RECOMMENDER"],
+    japaneseElement: {
+      name: "Bamboo Stalks",
+      kanji: "竹",
+      romaji: "Take",
+      themeColor: "#48C774",
+      symbolism: "Living soil resilience, agronomic telemetry & companion growth",
+    },
     problem:
       "Monoculture farming and ill-timed planting without soil compatibility insights lead to reduced yields and depleted soil nutrients. Most small farmers lack accessible localized agronomic guidance.",
     solution:
@@ -154,6 +182,13 @@ export const projects: Project[] = [
     summary:
       "A sequence prediction model trained on benchmark text datasets, implemented with an interactive Streamlit testing interface to explore sequence tokenization and probability distributions.",
     tags: ["PYTHON", "NLP", "SEQUENCE PREDICTION", "STREAMLIT"],
+    japaneseElement: {
+      name: "Sensu Fan",
+      kanji: "扇子",
+      romaji: "Sensu",
+      themeColor: "#E5A83B",
+      symbolism: "Folding sequence context, token probabilities & linguistic flow",
+    },
     problem:
       "Understanding how tokenization, n-gram contexts, and recurrent neural representations influence sequence likelihood in language modeling.",
     solution:
@@ -192,6 +227,13 @@ export const projects: Project[] = [
     summary:
       "An architectural design for a virtual testbed where simulated offensive security maneuvers meet defensive intrusion detection and log analysis.",
     tags: ["CYBERSECURITY", "NETWORK SECURITY", "SIMULATION", "CONCEPT"],
+    japaneseElement: {
+      name: "Katana",
+      kanji: "刀",
+      romaji: "Katana",
+      themeColor: "#D64545",
+      symbolism: "Martial precision — offensive attack vectors vs defensive telemetry",
+    },
     problem:
       "Practical defensive training requires safe sandboxes where attack vectors and detection telemetry can be observed in real time without endangering production networks.",
     solution:
@@ -215,6 +257,49 @@ export const projects: Project[] = [
         "Architectural blueprint pairing attack scenarios against defensive log monitoring and SIEM event streams.",
       interviewer:
         "Exploration into defensive telemetry collection: modeling adversarial MITRE ATT&CK tactics in isolated environments to evaluate detection latency.",
+    },
+    githubUrl: "https://github.com/MauryvanshiPrateek",
+  },
+  {
+    slug: "omotenashi-core",
+    title: "Omotenashi Core",
+    category: "SYSTEMS / ATOMIC ARCHITECTURE",
+    type: "SYSTEM ARCHITECTURE / PROTOTYPE",
+    status: "PROTOTYPE",
+    year: "2024",
+    oneLiner: "Artisanal zero-allocation event pipeline and lightweight telemetry engine.",
+    summary:
+      "A high-throughput, minimalist data pipeline engineered on the Japanese philosophy of Kodawari (uncompromising craftsmanship) — zero bloat, atomic memory buffers, and microsecond dispatch.",
+    tags: ["RUST", "ZERO-ALLOCATION", "SYSTEMS", "CONCURRENCY"],
+    japaneseElement: {
+      name: "Sushi",
+      kanji: "寿司",
+      romaji: "Sushi",
+      themeColor: "#FF8A65",
+      symbolism: "Artisanal discipline, atomic precision & zero-bloat execution",
+    },
+    problem:
+      "Modern telemetry architectures often accumulate massive memory footprints and runtime garbage collection pauses due to bloated intermediary object representations.",
+    solution:
+      "Engineered an atomic, ring-buffer event dispatcher ensuring deterministic microsecond latency, zero intermediate heap allocations, and graceful backpressure handling.",
+    contribution:
+      "Architected the lock-free circular queue, buffer reuse pools, and benchmark harness.",
+    limitations: [
+      "Currently optimized for single-node multi-core processing rather than distributed cluster partitioning.",
+    ],
+    learned: [
+      "Lock-free concurrency primitives and atomic memory ordering semantics.",
+      "CPU cache line alignment and false-sharing mitigation.",
+    ],
+    futureScope: [
+      "Distributed sharding over io_uring Linux kernel interfaces.",
+    ],
+    levels: {
+      hr: "An ultra-fast, lightweight data engine designed to process events without slowing down computers or servers.",
+      developer:
+        "Lock-free ring buffer implementation with cache-line padded atomics, eliminating runtime GC overhead and ensuring bounded sub-millisecond latencies.",
+      interviewer:
+        "Evaluated memory barrier overhead across architectures. Implemented single-producer multi-consumer wait-free ring buffer maintaining atomic monotonic read-write cursors.",
     },
     githubUrl: "https://github.com/MauryvanshiPrateek",
   },

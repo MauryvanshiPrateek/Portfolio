@@ -1,6 +1,6 @@
 import { Hero } from "@/components/hero/Hero";
-import { IdeaToSystem } from "@/components/home/IdeaToSystem";
-import { FeaturedProjects } from "@/components/home/FeaturedProjects";
+import { ThePathSoFar } from "@/components/home/ThePathSoFar";
+import { JapaneseProjectsShowcase } from "@/components/projects/JapaneseProjectsShowcase";
 import { TpcMetrics } from "@/components/home/TpcMetrics";
 import { Capabilities } from "@/components/home/Capabilities";
 import { International } from "@/components/home/International";
@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <main className="flex flex-col w-full">
       <Hero />
-      <IdeaToSystem />
-      <FeaturedProjects />
+      <ThePathSoFar />
+      <JapaneseProjectsShowcase />
       <TpcMetrics />
       <Capabilities />
       <International />

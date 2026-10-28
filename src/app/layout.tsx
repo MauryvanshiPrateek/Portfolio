@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
+import { LanguageProvider } from "@/lib/LanguageContext";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { CustomCursor } from "@/components/ui/CustomCursor";
@@ -18,6 +19,19 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -76,26 +90,28 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} ${cormorant.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-background text-text antialiased selection:bg-accent selection:text-white cursor-none md:cursor-auto">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          <LoadingScreen />
-          <CustomCursor />
-          <CommandPalette />
-          <Navbar />
-          <div className="flex-1 flex flex-col pt-[72px]">
-            <PageTransition>
-              {children}
-            </PageTransition>
-          </div>
-          <Footer />
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+            disableTransitionOnChange
+          >
+            <LoadingScreen />
+            <CustomCursor />
+            <CommandPalette />
+            <Navbar />
+            <div className="flex-1 flex flex-col pt-[72px]">
+              <PageTransition>
+                {children}
+              </PageTransition>
+            </div>
+            <Footer />
+          </ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );
